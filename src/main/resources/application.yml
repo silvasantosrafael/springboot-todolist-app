@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: todolist
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/todolist_db
+    username: postgres
+    password: +OZbHqGSsyZp
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
