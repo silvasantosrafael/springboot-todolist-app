@@ -68,10 +68,9 @@ public class TodoRepositoryInMemory implements BaseRepository {
             .filter(t -> Objects.equals(t.getId(), todo.getId()))
             .findFirst()
             .map(foundTodo -> {
-                foundTodo.setTitle(todo.getTitle() != null ? todo.getTitle() : foundTodo.getTitle());
-                foundTodo.setDescription(todo.getDescription() != null ? todo.getDescription() : foundTodo.getDescription());
-                foundTodo.setCompleted(todo.isCompleted() || foundTodo.isCompleted());
-                foundTodo.setCreatedAt(LocalDateTime.now());
+                foundTodo.setTitle(todo.getTitle());
+                foundTodo.setDescription(todo.getDescription());
+                foundTodo.setCompleted(todo.isCompleted());
                 return foundTodo;
             })
             .orElse(null);
