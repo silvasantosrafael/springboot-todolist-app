@@ -48,12 +48,7 @@ public class TodoController {
 
     @GetMapping("/search")
     public ResponseEntity<List<Todo>> getTodoByTitle(@RequestParam String title) {
-        List<Todo> todoList = this.todoService.getByTitle(title);
-        if (todoList.isEmpty()) {
-            return notFound().build();
-        }
-
-        return ok(todoList);
+        return ResponseEntity.ok(this.todoService.getByTitle(title));
     }
 
     @GetMapping("/status")
