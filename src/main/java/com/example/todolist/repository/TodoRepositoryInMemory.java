@@ -15,13 +15,14 @@ public class TodoRepositoryInMemory implements BaseRepository {
     private static final List<Todo> todoList = new ArrayList<>();
     private Long pkId = 1L;
 
-    public TodoRepositoryInMemory() {
+
+    public void generateTodos() {
         for (int i = 1; i <= 3; i++) {
             todoList.add(new Todo(
                 pkId++,
                 "An title_" + i,
                 "An description " + i,
-                false,
+                i == 2,
                 LocalDateTime.now()));
         }
     }
