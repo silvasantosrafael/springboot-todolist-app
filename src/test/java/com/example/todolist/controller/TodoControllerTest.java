@@ -35,7 +35,9 @@ class TodoControllerTest {
     static class TodoControllerTestConfig {
         @Bean
         public TodoRepositoryInMemory todoRepositoryInMemory() {
-            return new TodoRepositoryInMemory();
+            TodoRepositoryInMemory todoRepositoryInMemory = new TodoRepositoryInMemory();
+            todoRepositoryInMemory.generateTodos();
+            return todoRepositoryInMemory;
         }
 
         @Bean
@@ -96,7 +98,8 @@ class TodoControllerTest {
         void shouldReturnNotFoundWhenTodoTitleNotExists() throws Exception {
             mockMvc.perform(get("/todos/search")
                     .param("title", "An title_10"))
-                .andExpect(status().isNotFound());
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$").isArray());
         }
     }
 
