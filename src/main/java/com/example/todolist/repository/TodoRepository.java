@@ -34,7 +34,7 @@ public class TodoRepository implements BaseRepository {
 
     @Override
     public List<Todo> findByTitle(String title) {
-        return repository.findByTitle(title);
+        return repository.findByTitleIgnoreCase(title);
     }
 
     @Override
