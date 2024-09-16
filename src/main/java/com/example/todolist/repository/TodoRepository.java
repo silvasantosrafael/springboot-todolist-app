@@ -1,6 +1,7 @@
 package com.example.todolist.repository;
 
 import com.example.todolist.model.Todo;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -23,7 +24,7 @@ public class TodoRepository implements BaseRepository {
 
     @Override
     public List<Todo> findAll() {
-        return repository.findAll();
+        return repository.findAll(Sort.by(Sort.Direction.ASC, "id"));
     }
 
     @Override
