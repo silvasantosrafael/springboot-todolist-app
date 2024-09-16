@@ -77,8 +77,8 @@ public class TodoRepositoryInMemory implements BaseRepository {
     }
 
     @Override
-    public void delete(Todo todo) {
-        todoList.removeIf(t -> Objects.equals(t.getId(), todo.getId()));
+    public void deleteById(Long id) {
+        todoList.removeIf(t -> Objects.equals(t.getId(), id));
     }
 
     private void incrementPK() {

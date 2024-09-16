@@ -48,7 +48,7 @@ public class TodoRepository implements BaseRepository {
     }
 
     @Override
-    public void delete(Todo todo) {
-        repository.delete(todo);
+    public void deleteById(Long id) {
+        repository.deleteById(id);
     }
 }
