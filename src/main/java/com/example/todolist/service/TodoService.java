@@ -40,9 +40,18 @@ public class TodoService {
     public Todo update(Todo todo, Long id) {
         return baseRepository.findById(id)
             .map(foundTodo -> {
-                foundTodo.setTitle(todo.getTitle() != null ? todo.getTitle() : foundTodo.getTitle());
-                foundTodo.setDescription(todo.getDescription() != null ? todo.getDescription() : foundTodo.getDescription());
-                foundTodo.setCompleted(todo.isCompleted() != foundTodo.isCompleted() ? todo.isCompleted() : foundTodo.isCompleted());
+                if (todo.getTitle() != null) {
+                    foundTodo.setTitle(todo.getTitle());
+                }
+
+                if (todo.getDescription() != null) {
+                    foundTodo.setDescription(todo.getDescription());
+                }
+
+                if (todo.isCompleted() != foundTodo.isCompleted()) {
+                    foundTodo.setCompleted(todo.isCompleted());
+                }
+
                 return baseRepository.update(foundTodo);
             })
             .orElse(null);
@@ -51,7 +60,7 @@ public class TodoService {
     public boolean delete(Long id) {
         return this.baseRepository.findById(id)
             .map(foundTodo -> {
-                this.baseRepository.delete(foundTodo);
+                this.baseRepository.deleteById(id);
                 return true;
             })
             .orElse(false);
