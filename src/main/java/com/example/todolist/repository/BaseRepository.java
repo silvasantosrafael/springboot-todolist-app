@@ -20,5 +20,5 @@ public interface BaseRepository {
 
     Todo update(Todo todo);
 
-    void delete(Todo todo);
+    void deleteById(Long id);
 }
